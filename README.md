@@ -7,10 +7,10 @@ Due to Mixup and CutMix augmentation blending images from multiple classes (e.g.
 Data Augmentation
 Training used aggressive augmentation to prevent overfitting:
 
-RandAugment: Random sequences of rotation, shearing, and color jittering
-Random Erasing: 25% probability to occlude image regions
-Mixup & CutMix: Blending multiple images and labels
-Random translations and crops
+* RandAugment: Random sequences of rotation, shearing, and color jittering
+* Random Erasing: 25% probability to occlude image regions
+* Mixup & CutMix: Blending multiple images and labels
+* Random translations and crops
 
 Validation and test sets used only resizing and normalization.
 
