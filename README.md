@@ -1,18 +1,18 @@
 # MLCapstone
 ML Capstone Project: Stanford Dogs Image Recognition
 
-This project implements a Convolutional Neural Network (CNN) to recognize and classify images of dogs across 120 different breeds. We trained our model on a dataset of 20,000+ labeled dog images, which were divided into training, validation, and testing sets. Each dataset was handled using PyTorch data loaders with a batch size of 32 and randomized shuffling for robust training.
+Model Architecture & Training
+We used a pre-trained ResNet-50 from the Transformers library, fine-tuned on the Stanford Dogs dataset. The model consists of convolutional layers, global average pooling, and a classification head modified for 120 dog breeds.
+Due to Mixup and CutMix augmentation blending images from multiple classes (e.g., 60% Corgi + 40% Golden Retriever), we used Soft Target Cross Entropy loss during training to handle fractional labels. Standard Cross Entropy was used for validation and testing.
+Data Augmentation
+Training used aggressive augmentation to prevent overfitting:
 
-Data can be found at: http://vision.stanford.edu/aditya86/ImageNetDogs/ or https://www.kaggle.com/datasets/jessicali9530/stanford-dogs-dataset
+RandAugment: Random sequences of rotation, shearing, and color jittering
+Random Erasing: 25% probability to occlude image regions
+Mixup & CutMix: Blending multiple images and labels
+Random translations and crops
 
-The CNN architecture consists of four convolutional blocks, each containing:
-  * Convolutional layers for feature extraction
-  * Batch Normalization to normalize pixel values (scaled from [0, 255] to [0, 1])
-  * Max Pooling (2×2) to reduce spatial dimensions
-  * Dropout (p=0.1) to prevent overfitting
-
-The output from each block feeds into the next, followed by an adaptive pooling layer that averages each feature map. Model weights and biases are updated and saved after each epoch to track learning progress.
-This repository demonstrates the end-to-end process of dataset handling, CNN design, and training for image classification.
+Validation and test sets used only resizing and normalization.
 
 ## Training
 
